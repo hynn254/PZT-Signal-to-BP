@@ -47,11 +47,14 @@ coeffs_denoised = [cA4] + cDs_thresh
 # single level inverse -> pywt.idwt
 # multi-level inverse(reconstruction) -> pywt.waverec
 # pzt_denoised_wv = pywt.waverec(coeffs_denoised, wavelet='coif9')
-pzt_denoised = butter_bandpass(0.3, 5.0, pzt_signal, 400, 3)
+pzt_denoised_2 = butter_bandpass(0.3, 5.0, pzt_signal, 400, 2)
+pzt_denoised_3 = butter_bandpass(0.3, 5.0, pzt_signal, 400, 3)
+pzt_denoised_4 = butter_bandpass(0.3, 5.0, pzt_signal, 400, 4)
+pzt_denoised_5 = butter_bandpass(0.3, 5.0, pzt_signal, 400, 5)
 
 ######## Plot
-plt.figure(figsize=(12, 5))
-plt.subplot(1, 3, 1)
+plt.figure(figsize=(20, 5))
+plt.subplot(1, 5, 1)
 plt.plot(pzt_signal)
 plt.title('Original signal')
 
@@ -59,9 +62,21 @@ plt.title('Original signal')
 # plt.plot(pzt_denoised_wv)
 # plt.title('Wavelet denoised')
 
-plt.subplot(1, 3, 2)
-plt.plot(pzt_denoised)
-plt.title('Bandpass filtering')
+plt.subplot(1, 5, 2)
+plt.plot(pzt_denoised_2)
+plt.title('Bandpass filtering - 2nd')
+
+plt.subplot(1, 5, 3)
+plt.plot(pzt_denoised_3)
+plt.title('Bandpass filtering - 3rd')
+
+plt.subplot(1, 5, 4)
+plt.plot(pzt_denoised_4)
+plt.title('Bandpass filtering - 4th')
+
+plt.subplot(1, 5, 5)
+plt.plot(pzt_denoised_5)
+plt.title('Bandpass filtering - 5th')
 
 plt.tight_layout()
 plt.show()
