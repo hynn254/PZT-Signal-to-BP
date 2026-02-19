@@ -26,13 +26,13 @@ raw/
 │ ├── JHJ_st.csv
 │ ├── JHJ_ex.csv
 │ ├── ...
-├── **GT**/
+├── GT/
 │ ├── 20260212.csv
 │ ├── ...
-├── **Mn0**/
+├── Mn0/
 │ ├── 20260214/
 │ ├── ...
-├── **Mn8**/
+├── Mn8/
 │ ├── 20260214/
 │ ├── ...
 ```
@@ -44,14 +44,14 @@ raw/
 >**NOTE:** {name}_{case}.csv
 - {name}: Subject identifier
 - {case}: Experimental condition
-  1) st: steady state
-  2) ex: exercise (to increase BP)
-  3) re: rest (post-exercise steady state)
+  - st: steady state
+  - ex: exercise (to increase BP)
+  - re: rest (post-exercise steady state)
 
 ### data/processed/
 ```
 processed/
-├── **ref**/
+├── ref/
 │ ├── 20260211/
 │ ├── 20260212/
 │ ├── Mn0/
