@@ -55,8 +55,9 @@ def wavelet_denoising_1D(data, mother_wavelet: str, level: int, thrs_mode: str):
 
 ######## Read PZT sensor signal
 # fs = 1/0.0025s = 400 Hz
-file_name = 'Mn8/20260214_JHJ_re2'
-pzt_signal = pd.read_csv(f'BP-piezo/data/raw/{file_name}.csv')['1'].to_numpy()[1:]
+folder = 'Mn8/20260219'
+file_name = 'PDK_st13'
+pzt_signal = pd.read_csv(f'BP-piezo/data/raw/{folder}/{file_name}.csv')['1'].to_numpy()[1:]
 pzt_signal = np.asarray(pzt_signal, dtype=np.float64)
 
 
@@ -65,8 +66,10 @@ pzt_signal = np.asarray(pzt_signal, dtype=np.float64)
 pzt_denoised_lp = butter_lowpass(pzt_signal, cutoff=10.0, fs=400, order=3)
 pzt_denoised_ref = wavelet_denoising_1D(pzt_denoised_lp, 'coif9', 4, 'hard')
 # Min-max normalization should be applied before feeding data into the network
+
+# Save the processed datas
 pzt_df = pd.DataFrame({'Volt': pzt_denoised_ref})
-pzt_df.to_csv(f'BP-piezo/data/processed/ref/{file_name}.csv', index=False)
+pzt_df.to_csv(f'BP-piezo/data/processed/ref/{folder}/{file_name}.csv', index=False)
 
 
 # Wavelet transform + Bandpass filtering (WB)
@@ -86,7 +89,7 @@ plt.plot(pzt_signal)
 plt.title('Original signal')
 
 plt.subplot(1, 3, 2)
-plt.plot(pzt_denoised_ref)
+plt.plot(-1*pzt_denoised_ref)
 plt.title('Ref. Lowpass - Wavelet')
 
 plt.subplot(1, 3, 3)
