@@ -60,7 +60,7 @@ processed/
 ```
 - `ref`: Reference preprocessing pipeline; Low-pass filtering → Wavelet transform
 
-_Reference_
+_Reference_:
 Li, M., Aoyama, J., Inayoshi, K., & Zhang, H. (2025). Wearable PZT piezoelectric sensor device for accurate arterial pressure pulse waveform measurement. Advanced Electronic Materials, 11(9), 2400852.
 
 
