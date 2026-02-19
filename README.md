@@ -41,7 +41,7 @@ raw/
 - Data were collected using two sensor types: `Mn0` and `Mn8`.
 - Ground truth measurements are stored separately in the `GT` and organized by date.
 #### File Naming Format
->**NOTE:** {name}_{case}.csv
+>**{name}_{case}.csv**
 - {name}: Subject identifier
 - {case}: Experimental condition
   - st: steady state
