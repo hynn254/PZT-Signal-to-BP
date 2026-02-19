@@ -2,7 +2,7 @@ import pywt
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-from filters import butter_bandpass
+from filters import butter_bandpass, butter_lowpass
 
 
 def wavelet_denoising_1D(data, mother_wavelet: str, level: int, thrs_mode: str):
@@ -55,23 +55,28 @@ def wavelet_denoising_1D(data, mother_wavelet: str, level: int, thrs_mode: str):
 
 ######## Read PZT sensor signal
 # fs = 1/0.0025s = 400 Hz
-file_name = '20260211_JHJ'
-pzt_signal = pd.read_csv(f'BP-piezo/data/{file_name}.csv')['1'].to_numpy()[1:]
+file_name = 'Mn8/20260214_JHJ_re2'
+pzt_signal = pd.read_csv(f'BP-piezo/data/raw/{file_name}.csv')['1'].to_numpy()[1:]
 pzt_signal = np.asarray(pzt_signal, dtype=np.float64)
 
 
 ######## Implement paper 
-# Only wavelet transform (OW)
-pzt_denoised_ow = wavelet_denoising_1D(pzt_signal, 'coif9', 4, 'hard')
+# Lowpass filtering + wavelet transform
+pzt_denoised_lp = butter_lowpass(pzt_signal, cutoff=10.0, fs=400, order=3)
+pzt_denoised_ref = wavelet_denoising_1D(pzt_denoised_lp, 'coif9', 4, 'hard')
+# Min-max normalization should be applied before feeding data into the network
+pzt_df = pd.DataFrame({'Volt': pzt_denoised_ref})
+pzt_df.to_csv(f'BP-piezo/data/processed/ref/{file_name}.csv', index=False)
+
 
 # Wavelet transform + Bandpass filtering (WB)
-pzt_denoised_wb = butter_bandpass(0.3, 5.0, pzt_denoised_ow, 400, 3)
+pzt_denoised_wb = butter_bandpass(pzt_denoised_ref, 0.001, 10.0, 400, 3)
 
 # Only bandpass filtering (OB)
-pzt_denoised_2 = butter_bandpass(0.3, 5.0, pzt_signal, 400, 2)
-pzt_denoised_3 = butter_bandpass(0.3, 5.0, pzt_signal, 400, 3)
-pzt_denoised_4 = butter_bandpass(0.3, 5.0, pzt_signal, 400, 4)
-pzt_denoised_5 = butter_bandpass(0.3, 5.0, pzt_signal, 400, 5)
+pzt_denoised_2 = butter_bandpass(pzt_signal, 0.3, 5.0, 400, 2)
+pzt_denoised_3 = butter_bandpass(pzt_signal, 0.3, 5.0, 400, 3)
+pzt_denoised_4 = butter_bandpass(pzt_signal, 0.3, 5.0, 400, 4)
+pzt_denoised_5 = butter_bandpass(pzt_signal, 0.01, 10.0, 400, 5)
 
 
 ######## Plot
@@ -81,8 +86,12 @@ plt.plot(pzt_signal)
 plt.title('Original signal')
 
 plt.subplot(1, 3, 2)
-plt.plot(pzt_denoised_3)
-plt.title('Wavelet denoised')
+plt.plot(pzt_denoised_ref)
+plt.title('Ref. Lowpass - Wavelet')
+
+plt.subplot(1, 3, 3)
+plt.plot(pzt_denoised_wb)
+plt.title('Only Bandpass')
 
 # plt.subplot(1, 5, 2)
 # plt.plot(pzt_denoised_2)

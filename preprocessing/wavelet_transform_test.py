@@ -1,6 +1,4 @@
-import pywt
 import numpy as np
-import pandas as pd
 from wavelet_transform import wavelet_denoising_1D
 
 # Make sine signal for example

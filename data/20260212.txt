@@ -1,5 +1,0 @@
-name	case		SBP	DBP
-JHJ	steady		124	84
-JHJ	exercise	132	84
-PDK	steady		124	75
-PDK	exercise	149	92
