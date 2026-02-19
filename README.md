@@ -2,19 +2,21 @@
 Blood pressure estimation codes using PZT sensor signal preprocessing and deep learning
 
 ## Data Directory Structure
+```
 BP-piezo/
 │
 ├── data/
 │ ├── raw/
 │ ├── processed/
 │ └── make_gt.py
+```
 
 - `raw/`: Raw PZT signals collected from experiments.
 - `processed/`: Processed PZT signals used for analysis and model input.
 - `make_gt.py`: Python script for organizing BP labels and saving them as a CSV file.
 
 ### data/raw/
-
+```
 raw/
 │
 ├── 20260211/
@@ -33,13 +35,13 @@ raw/
 ├── **Mn8**/
 │ ├── 20260214/
 │ ├── ...
-
+```
 - Data are organized by experiment date (`YYYYMMDD`).
 - The sensor type is not encoded in date-based folders.
 - Data were collected using two sensor types: `Mn0` and `Mn8`.
 - Ground truth measurements are stored separately in the `GT` and organized by date.
 #### File Naming Format
-{name}_{case}.csv
+>**NOTE:** {name}_{case}.csv
 - {name}: Subject identifier
 - {case}: Experimental condition
   1) st: steady state
@@ -47,7 +49,7 @@ raw/
   3) re: rest (post-exercise steady state)
 
 ### data/processed/
-
+```
 processed/
 ├── **ref**/
 │ ├── 20260211/
@@ -55,7 +57,7 @@ processed/
 │ ├── Mn0/
 │ └── Mn8/
 ├── ...
-
+```
 - `ref`: Reference preprocessing pipeline; Low-pass filtering → Wavelet transform
 
 _Reference_
