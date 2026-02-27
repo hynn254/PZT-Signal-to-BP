@@ -2,7 +2,7 @@ import pywt
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-from filters import butter_bandpass, butter_lowpass
+from utils import butter_bandpass, butter_lowpass
 
 
 def wavelet_denoising_1D(data, mother_wavelet: str, level: int, thrs_mode: str):
