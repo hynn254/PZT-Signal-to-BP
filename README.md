@@ -63,4 +63,14 @@ processed/
 _Reference_:
 Li, M., Aoyama, J., Inayoshi, K., & Zhang, H. (2025). Wearable PZT piezoelectric sensor device for accurate arterial pressure pulse waveform measurement. Advanced Electronic Materials, 11(9), 2400852.
 
-
+#### Detail in {sensor} folder
+```
+Mn8/
+├── 20260219/
+│ ├── matched/
+│ ├── JHJ_st1.csv
+│ ├── JHJ_st2.csv/
+│ ├── ...
+├── ...
+```
+- `matched`: Version with preprocessing(low-pass → wavelet) and signal polarity matching completed by `match_polarity.py`
