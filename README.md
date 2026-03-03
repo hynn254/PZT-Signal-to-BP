@@ -6,9 +6,9 @@ Blood pressure estimation codes using PZT sensor signal preprocessing and deep l
 BP-piezo/
 │
 ├── data/
-│ ├── raw/
-│ ├── processed/
-│ └── make_gt.py
+│ ├── *raw/
+│ ├── *processed/
+│ └── *make_gt.py
 ```
 
 - `raw/`: Raw PZT signals collected from experiments.
@@ -19,20 +19,20 @@ BP-piezo/
 ```
 raw/
 │
-├── 20260211/
+├── *20260211/
 │ ├── JHJ_st.csv
 │ └── PDK_st.csv
-├── 20260212/
+├── *20260212/
 │ ├── JHJ_st.csv
 │ ├── JHJ_ex.csv
 │ ├── ...
-├── GT/
+├── *GT/
 │ ├── 20260212.csv
 │ ├── ...
-├── Mn0/
+├── *Mn0/
 │ ├── 20260214/
 │ ├── ...
-├── Mn8/
+├── *Mn8/
 │ ├── 20260214/
 │ ├── ...
 ```
@@ -51,7 +51,7 @@ raw/
 ### data/processed/
 ```
 processed/
-├── ref/
+├── *ref/
 │ ├── 20260211/
 │ ├── 20260212/
 │ ├── Mn0/
@@ -67,7 +67,7 @@ Li, M., Aoyama, J., Inayoshi, K., & Zhang, H. (2025). Wearable PZT piezoelectric
 ```
 Mn8/
 ├── 20260219/
-│ ├── matched/
+│ ├── *matched/
 │ ├── JHJ_st1.csv
 │ ├── JHJ_st2.csv/
 │ ├── ...
