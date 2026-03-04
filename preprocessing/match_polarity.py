@@ -21,8 +21,8 @@ def match_polarity_(signal):
 
 
 ## Use preprocessed signal (lowpass filtering - wavelet denoising)
-folder = 'BP-piezo/data/processed/ref/Mn8'
-date = '20260219'
+folder = 'BP-piezo/data/processed/ref/Mn0'
+date = '20260303'
 
 pzt_files = list(Path(f'{folder}/{date}').glob('*.csv'))
 
