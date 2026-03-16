@@ -59,8 +59,10 @@ folder = 'Mn8/20260303'
 file_name = 'LJO_st3'
 
 sensor = 'Mn0'
-date = '20260303'
-pzt_files = list(Path(f'BP-piezo/data/raw/{sensor}/{date}').glob('*.csv'))  # When using data that records date and sensor type
+date = '20260313'
+# pzt_files = list(Path(f'BP-piezo/data/raw/{sensor}/{date}').glob('*.csv'))  # When using data that records date and sensor type
+pzt_files = list(Path(f'BP-piezo/data/raw/{date}').glob('*.csv'))  # When using data that records date and sensor type
+
 # pzt_files = list(Path(f'BP-piezo/data/processed/ref/{date}').glob('*.csv'))             # When using data that only records date
 
 for pzt_file in pzt_files:
@@ -75,8 +77,8 @@ for pzt_file in pzt_files:
 
     # Save the processed datas
     pzt_df = pd.DataFrame({'Volt': pzt_denoised_ref})
-    create_directory(f'BP-piezo/data/processed/ref/{sensor}/{date}')
-    pzt_df.to_csv(f'BP-piezo/data/processed/ref/{sensor}/{date}/{pzt_file.name}', index=False)
+    create_directory(f'BP-piezo/data/processed/ref/{date}')
+    pzt_df.to_csv(f'BP-piezo/data/processed/ref/{date}/{pzt_file.name}', index=False)
 
 
     # Wavelet transform + Bandpass filtering (WB)

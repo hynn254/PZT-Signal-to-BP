@@ -46,8 +46,12 @@ for file in pzt_files:
     plt.subplot(1, 2, 2)
     plt.plot(matched_signal)
     plt.title('After')
+    # create_directory(f'BP-piezo/results/matching_polarity/{date}')
+    # plt.savefig(f'BP-piezo/results/matching_polarity/{date}/{file.stem}.png')
+    
     plt.gcf().canvas.mpl_connect('key_press_event', enter_key)
     plt.show()
     plt.close('all') 
+
     
     

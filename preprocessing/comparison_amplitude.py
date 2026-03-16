@@ -8,7 +8,7 @@ from pathlib import Path
 #### USE MATCHED PROCESSED SIGNAL 
 name = 'JHJ'
 date = '20260303'
-sensor = 'Mn0'
+sensor = 'Mn8'
 num = '2'
 method = 'first_derivative'
 
@@ -58,7 +58,7 @@ sorted_pzt_files = sorted(pzt_files, key=sort_key)
 
 ## Plot fucntion
 def plot_by_case(sorted_files, compare_method=None, title=""):
-    colors = {"st": 'silver', "ex": 'coral', "re": 'seagreen'}
+    colors = {"st": 'silver', "ex": 'coral', "re": 'silver'}
 
     start = 0
     merged_signal = []
@@ -84,7 +84,7 @@ def plot_by_case(sorted_files, compare_method=None, title=""):
         merged_signal.append(signal)
         start = end
 
-    plt.title(f'({name}) {title}')
+    plt.title(f'{title}')
     plt.show()
 
     return np.concatenate(merged_signal)

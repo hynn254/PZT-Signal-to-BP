@@ -12,7 +12,7 @@ while True:
     # Select the experiment case
     case_num = int(input("Case   202050827[1. steady, 2. exercise, 3. rest(steady after exercise)]: "))
     # Select the sensor type
-    sensor_num = int(input("Sensor [1. Mn0, 2. Mn8]: "))
+    sensor_num = int(input("Sensor [1. Mn0, 2. Mn8, 3. Small]: "))
 
     if case_num == 1:
         case = 'steady'
@@ -28,8 +28,9 @@ while True:
         sensor = 'Mn0'
     elif sensor_num == 2:
         sensor = 'Mn8'
+    elif sensor_num == 3:
+        sensor = 'small'
     else:
-        print('Invalid case number')
         continue
 
     df = pd.DataFrame({'name': [name], 'SBP': [sbp], 'DBP': [dbp], 'case': [case], 'sensor': [sensor]})    
