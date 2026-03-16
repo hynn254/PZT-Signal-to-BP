@@ -9,7 +9,8 @@ import matplotlib.pyplot as plt
 ## Function for matching polarity
 def match_polarity_(signal):
     first_dev = first_derivative(signal)
-    skewness = skew(first_dev)
+    # skewness = skew(first_dev)
+    skewness = skew(signal)
     
     if skewness >= 0:
         matched_signal = signal
@@ -19,12 +20,13 @@ def match_polarity_(signal):
     return matched_signal, skewness
 
 
-
 ## Use preprocessed signal (lowpass filtering - wavelet denoising)
-folder = 'BP-piezo/data/processed/ref/Mn0'
-date = '20260303'
+folder = 'BP-piezo/data/processed/ref/'
+date = '20260316'
+subject = 'PDK'
+# JHJ 112 123 113
 
-pzt_files = list(Path(f'{folder}/{date}').glob('*.csv'))
+pzt_files = list(Path(f'{folder}/{date}/{subject}').glob('*.csv'))
 
 for file in pzt_files:
     signal = pd.read_csv(file)['Volt'].to_numpy().astype(np.float64)
@@ -34,9 +36,9 @@ for file in pzt_files:
     print(f'{file.stem}: {skewness}')
 
     # Save matched signal to CSV file
-    create_directory(f'{folder}/{date}/matched')
+    create_directory(f'{folder}/{date}/{subject}/matched')
     matched_df = pd.DataFrame({'Volt': matched_signal})
-    matched_df.to_csv(f'{folder}/{date}/matched/{file.name}')
+    matched_df.to_csv(f'{folder}/{date}/{subject}/matched/{file.name}')
 
     # Plot the original signal and result
     plt.figure(figsize=(12, 5))
