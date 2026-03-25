@@ -2,7 +2,7 @@ import pandas as pd
 import os
 
 date = str(input("Date (ex. 20260101): "))
-path = f'BP-piezo/data/raw/GT/{date}.csv'
+path = f'BP-piezo/data/GT/{date}.csv'
 
 while True:
     name = str(input("Name (ex. JHJ): "))

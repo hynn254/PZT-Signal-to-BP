@@ -4,8 +4,8 @@ import pandas as pd
 
 
 folder = 'BP-piezo/data/raw/'
-date = '20260316'
-subject = 'OSJ'
+date = '20260320'
+subject = 'LJW'
 
 pzt_files = list(Path(f'{folder}/{date}/{subject}').glob('*.csv'))
 

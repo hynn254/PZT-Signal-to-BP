@@ -14,17 +14,18 @@ def match_polarity_(signal):
     
     if skewness >= 0:
         matched_signal = signal
+        # matched_signal = -1 * signal
     else:
         matched_signal = -1 * signal
+        # matched_signal = signal
     
     return matched_signal, skewness
 
 
 ## Use preprocessed signal (lowpass filtering - wavelet denoising)
 folder = 'BP-piezo/data/processed/ref/'
-date = '20260316'
-subject = 'PDK'
-# JHJ 112 123 113
+date = '20260324'
+subject = 'JIS'
 
 pzt_files = list(Path(f'{folder}/{date}/{subject}').glob('*.csv'))
 
@@ -54,6 +55,3 @@ for file in pzt_files:
     plt.gcf().canvas.mpl_connect('key_press_event', enter_key)
     plt.show()
     plt.close('all') 
-
-    
-    

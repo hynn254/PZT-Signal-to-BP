@@ -2,6 +2,7 @@ from scipy.signal import butter, filtfilt
 import numpy as np
 import os
 import matplotlib.pyplot as plt
+import re
 
 
 ## Filters
@@ -51,3 +52,9 @@ def create_directory(path):
 def enter_key(event):
     if event.key == 'enter':
         plt.close('all')
+
+
+## Sort keys
+def sort_scope_key(file):
+    numbers = list(map(int, re.findall(r'\d+', file.stem)))  # [1, 1], [2, 1], ...
+    return numbers

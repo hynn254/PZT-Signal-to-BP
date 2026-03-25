@@ -39,7 +39,7 @@ method = 'first_derivative'
 #### 2) Plot ALL signal successively in one figure
 
 ## Sort files
-pzt_files = list(Path(f'BP-piezo/data/processed/ref/{sensor}/{date}/matched').glob('*.csv'))  # When using data that records date and sensor type
+pzt_files = list(Path(f'BP-piezo/data/processed/ref/{date}/{sensor}/matched').glob('*.csv'))  # When using data that records date and sensor type
 # pzt_files = list(Path(f'BP-piezo/data/processed/ref/{date}').glob('*.csv'))             # When using data that only records date
 
 def sort_key(file):

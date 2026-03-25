@@ -55,13 +55,13 @@ def wavelet_denoising_1D(data, mother_wavelet: str, level: int, thrs_mode: str):
 
 ######## Read PZT sensor signal
 # fs = 1/0.0025s = 400 Hz
-folder = 'Mn8/20260303'
+folder = '20260303/Mn8'
 file_name = 'LJO_st3'
 
 sensor = 'Mn0'
-date = '20260316'
-subject = 'OSJ' 
-# pzt_files = list(Path(f'BP-piezo/data/raw/{sensor}/{date}').glob('*.csv'))  # When using data that records date and sensor type
+date = '20260324'
+subject = 'JIS ' 
+# pzt_files = list(Path(f'BP-piezo/data/raw/{date}/{sensor}').glob('*.csv'))  # When using data that records date and sensor type
 pzt_files = list(Path(f'BP-piezo/data/raw/{date}/{subject}').glob('*.csv'))  # When using data that records date and sensor type
 
 # pzt_files = list(Path(f'BP-piezo/data/processed/ref/{date}').glob('*.csv'))             # When using data that only records date
