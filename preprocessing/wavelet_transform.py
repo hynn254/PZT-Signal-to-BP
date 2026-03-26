@@ -85,11 +85,11 @@ for pzt_file in pzt_files:
     # Wavelet transform + Bandpass filtering (WB)
     pzt_denoised_wb = butter_bandpass(pzt_denoised_ref, 0.001, 10.0, 400, 3)
 
-# # Only bandpass filtering (OB)
-# pzt_denoised_2 = butter_bandpass(pzt_signal, 0.3, 5.0, 400, 2)
-# pzt_denoised_3 = butter_bandpass(pzt_signal, 0.3, 5.0, 400, 3)
-# pzt_denoised_4 = butter_bandpass(pzt_signal, 0.3, 5.0, 400, 4)
-# pzt_denoised_5 = butter_bandpass(pzt_signal, 0.01, 10.0, 400, 5)
+    # # Only bandpass filtering (OB)
+    # pzt_denoised_2 = butter_bandpass(pzt_signal, 0.3, 5.0, 400, 2)
+    # pzt_denoised_3 = butter_bandpass(pzt_signal, 0.3, 5.0, 400, 3)
+    # pzt_denoised_4 = butter_bandpass(pzt_signal, 0.3, 5.0, 400, 4)
+    # pzt_denoised_5 = butter_bandpass(pzt_signal, 0.01, 10.0, 400, 5)
 
 
     ######## Plot
