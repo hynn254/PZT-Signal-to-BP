@@ -17,6 +17,7 @@ BP-piezo/
 - `raw/`: Raw PZT signals collected from experiments.
 - `make_gt.py`: Python script for organizing BP labels and saving them as a CSV file.
 
+
 ### data/raw/
 #### Naming Format
 - Date: Experiment date
@@ -44,6 +45,7 @@ YYYYMMDD/
 - 20260309
 - 20260313
 
+
 #### Type 2. Date/Sensor type/{name}_{case}{num}.csv
 ```
 YYYYMMDD/
@@ -57,7 +59,8 @@ YYYYMMDD/
 - 20260214
 - 20260303 
 
-#### Type 3. Date/Name/scope_{num}_1.csv (⭐ Used for model training)
+
+#### Type 3. Date/Name/scope_{num}_1.csv (⭐ Used for model training - except 20260316)
 ```
 YYYYMMDD/
 ├── JHJ
@@ -83,17 +86,18 @@ processed/
 │ ├── ... (pzt signal files)
 ├── *augmentation
 │ ├── *gaussian/
+│ ├── *gaussian_20dB/
 │ └── *shifting/
 ```
 - `ref`: Reference preprocessing pipeline; Low-pass filtering → Wavelet transform
 - `matched`: Version with preprocessing(low-pass → wavelet) and signal polarity matching completed by `match_polarity.py` 
-- `augmentation`: Augmented data
-  - `gaussian`: Noise injection
-  - `shifting`: Signal shift
+- `augmentation`: Augmented data by `augment_data.py`
+  - `gaussian`: Noise injection - Fix std (0.001)
+  - `gaussian_20dB`: Noise injection - Fix noise (20dB)
+  - `shifting`: Signal shift (20%)
 
  
-
-_Reference_:
+## Reference
 Li, M., Aoyama, J., Inayoshi, K., & Zhang, H. (2025). Wearable PZT piezoelectric sensor device for accurate arterial pressure pulse waveform measurement. Advanced Electronic Materials, 11(9), 2400852.
 
 
